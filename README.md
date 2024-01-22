@@ -1,2 +1,2 @@
-# THON
+# THON 🚀 
 Google SOlutions Challenge 
