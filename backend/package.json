@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is the backend server code for the  Tohn platform, it serves the client front by accepting and delivering requests accordingly.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "express"
+  ],
+  "author": "Tohn",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
