@@ -7,6 +7,7 @@ const Homepage = () => {
       <Header />
       <section>
         <h1>this is our hero section</h1>
+        <p>Welcome to our new shopping experience.</p>
       </section>
     </Box>
   )
