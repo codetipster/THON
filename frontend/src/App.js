@@ -1,6 +1,6 @@
 import './App.css'
-import Homepage from './pages/Homepage'
 import Box from '@mui/material/Box';
+import Homepage from './pages/Hompage';
 
 function App() {
   
