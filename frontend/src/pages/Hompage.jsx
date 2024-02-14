@@ -76,13 +76,14 @@ const Homepage = () => {
       )}
       <section className='p-1'>
         <div className='flex flex-col md:flex-row'>
-          <div className='w-[50%] flex flex-col justify-center items-center h-[70vh]'>
-          <div className=''>
+          <div className='w-full md:w-1/2 flex flex-col justify-center items-center md:h-[90vh]'>
+          <div className='mt-20 sm:mt-0'>
             <motion.div
               initial={{ opacity: 0, x: -30, y: 0 }} // Start slightly left
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.2, duration: 1.9 }} // Increased duration for slower animation
-              style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
+              //style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
+              className="text-4xl md:text-5xl lg:text-6xl font-Xanh mb-5"
             >
               <div className='gradient-text'>
                 Own a piece of art...
@@ -93,7 +94,7 @@ const Homepage = () => {
               initial={{ opacity: 0, x: -60, y: 20 }} // Move further left and slightly down
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.7, duration: 1.9 }} // Increased duration for slower animation
-              style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
+              className="text-4xl md:text-5xl lg:text-6xl font-Xanh mb-5"
             >
               <div className='gradient-text'>
                 Empower a woman...
@@ -104,7 +105,7 @@ const Homepage = () => {
               initial={{ opacity: 0, x: -90, y: 40 }} // Even further left and more down
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 1.2, duration: 1.9 }} // Increased duration for slower animation
-              style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
+              className="text-4xl md:text-5xl lg:text-6xl font-Xanh mb-5"
             >
               <div className='gradient-text'>
                 Plant a tree
@@ -112,20 +113,31 @@ const Homepage = () => {
             </motion.div>
           </div>
           
-            <Button
-              variant="outlined"
-              sx={{ color: '#D7193E', borderColor: '#CE2344', ':hover': { backgroundColor: '#ffff', borderColor: '#CE2344' } }}
-              endIcon={<ShoppingBasketIcon />}
-              onClick={handleClick}
-              disabled={loading} // Disable button when loading
-            >
-              Shop Now
-            </Button>
-            <Box className=''></Box>
+          <Button
+          variant="outlined"
+          sx={{
+            minWidth: { xs: '100%', sm: '150px' }, // Responsive width: full width on xs screens, 150px on sm screens and above
+            height: '48px', // Increased height for better touchability
+            fontSize: { xs: '0.875rem', sm: '1rem' }, // Responsive font size
+            color: '#D7193E',
+            borderColor: '#CE2344',
+            ':hover': {
+              backgroundColor: '#ffff',
+              borderColor: '#CE2344',
+            },
+            // Add padding for larger touchable area and visual size
+            padding: { xs: '10px 20px', sm: '12px 24px' },
+          }}
+          endIcon={<ShoppingBasketIcon />}
+          onClick={handleClick}
+          disabled={loading} // Disable button when loading
+        >
+          Shop Now
+         </Button>
           </div>
-          <div className='w-[50%] bg-red-500 h-screen'>
-            <div className='w-[100%] h-screen bg-red-400 '>
-              <img src={lastSuja} alt="A of Suja" className='h-screen w-[100%]' />
+          <div className='w-full md:w-1/2 h-screen'>
+            <div className='w-full h-full '>
+              <img src={lastSuja} alt="A of Suja" className='h-full w-full object-cover' />
             </div>
           </div>
         </div>

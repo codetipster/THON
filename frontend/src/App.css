@@ -18,6 +18,20 @@ body {
   color: transparent;
   display: inline-block;
 }
+
+/* For medium screens (e.g., tablets) */
+@media (max-width: 768px) {
+  .gradient-text {
+    font-size: 3.5rem; /* Smaller font size for medium screens */
+  }
+}
+
+/* For small screens (e.g., mobile phones) */
+@media (max-width: 480px) {
+  .gradient-text {
+    font-size: 2rem; /* Even smaller font size for small screens */
+  }
+}
 .smooth{
   background: linear-gradient(to bottom, #ffffff  0%, #ffffff 50%, #F69432 100%);
 }
