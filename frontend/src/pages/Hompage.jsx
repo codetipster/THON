@@ -75,14 +75,14 @@ const Homepage = () => {
         </Box>
       )}
       <section className='p-1'>
-        <div className='flex'>
+        <div className='flex flex-col md:flex-row'>
           <div className='w-[50%] flex flex-col justify-center items-center h-[70vh]'>
           <div className=''>
             <motion.div
               initial={{ opacity: 0, x: -30, y: 0 }} // Start slightly left
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.2, duration: 1.9 }} // Increased duration for slower animation
-              style={{ fontSize: '50px', marginBottom: '20px' }}
+              style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
             >
               <div className='gradient-text'>
                 Own a piece of art...
@@ -93,7 +93,7 @@ const Homepage = () => {
               initial={{ opacity: 0, x: -60, y: 20 }} // Move further left and slightly down
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.7, duration: 1.9 }} // Increased duration for slower animation
-              style={{ fontSize: '50px', marginBottom: '20px' }}
+              style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
             >
               <div className='gradient-text'>
                 Empower a woman...
@@ -104,7 +104,7 @@ const Homepage = () => {
               initial={{ opacity: 0, x: -90, y: 40 }} // Even further left and more down
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 1.2, duration: 1.9 }} // Increased duration for slower animation
-              style={{ fontSize: '50px', marginBottom: '20px' }}
+              style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
             >
               <div className='gradient-text'>
                 Plant a tree
