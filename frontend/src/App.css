@@ -1,3 +1,14 @@
+:root {
+  --primary-color: #134929;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.primary-font {
+  font-family: var(--primary-font);
+}
 body {
   margin: 0;
   padding: 0;
@@ -12,7 +23,7 @@ body {
 .gradient-text{
   font-size: 5rem;
   font-weight: 900;
-  background: linear-gradient(80deg, #A81012, #F69432, #134929);
+  background: linear-gradient(75deg, #A81012, #F69432, #134929);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -21,3 +32,35 @@ body {
 .smooth{
   background: linear-gradient(to bottom, #ffffff  0%, #ffffff 50%, #F69432 100%);
 }
+.product-image,
+.product-hover-image {
+  width: 100%; /* This will make the image responsive */
+  display: block; /* Fixes any unwanted spacing below the image */
+  transition: opacity 0.7s ease-in-out; /* Increased time and easing function */
+}
+
+.product-hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Start fully transparent */
+  width: 100%; /* This will cover the base image */
+  height: auto; /* Maintain aspect ratio */
+  pointer-events: none; /* This ensures the image doesn't interfere with events */
+}
+
+.product-image-container:hover .product-hover-image {
+  opacity: 1; /* Fully visible when hovered */
+}
+
+.product-image-container:hover .product-image {
+  opacity: 0; /* Fully transparent when hovered */
+}
+.product-description{
+  margin-top: 20px;
+}
+.shop-now:hover {
+  text-decoration: underline;
+  transform: scale(1.25);
+}
+

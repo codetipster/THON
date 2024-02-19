@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useState, useEffect} from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import ScrollReveal from 'scrollreveal';
-import { motion } from 'framer-motion';
+import { backInOut, motion } from 'framer-motion';
 import artisanBImage from "../assets/images/recropped.jpg";
 
 
@@ -112,15 +112,23 @@ const Homepage = () => {
             </motion.div>
           </div>
           
-            <Button
-              variant="outlined"
-              sx={{ color: '#D7193E', borderColor: '#CE2344', ':hover': { backgroundColor: '#ffff', borderColor: '#CE2344' } }}
-              endIcon={<ShoppingBasketIcon />}
-              onClick={handleClick}
-              disabled={loading} // Disable button when loading
-            >
-              Shop Now
-            </Button>
+          <a
+          href="./Shop.jsx"
+          onClick={handleClick}
+          style={{
+            fontFamily: "Xanh Mono monospace",
+            fontSize: "20px",
+            color: '#134929',
+            display: 'inline-block',
+            transition: 'transform 0.7s ease',
+            cursor: loading ? 'default' : 'pointer', 
+          }}
+          className="shop-now"
+          aria-disabled={loading}
+        >
+          Shop Now
+        </a>
+
             <Box className=''></Box>
           </div>
           <div className='w-[50%] bg-red-500 h-screen'>
@@ -132,13 +140,13 @@ const Homepage = () => {
       </section>
 
       <section style={{ width: '100%', margin: '0 auto'}} >
-        <Typography variant="h4" gutterBottom className='p-10'>
+        <Typography variant="h4" gutterBottom style={{fontFamily: "Xanh Mono monospace"}} className='p-5 primary-color'>
         Our Artisans
         </Typography>
-        <Typography variant="h5" gutterBottom className='p-10'> 
-           For her, For the Earth!
+        <Typography variant="h5" gutterBottom style={{fontFamily: "Xanh Mono monospace"}} className='p-5 primary-color'> 
+           For her, For the Earth.
         </Typography>
-       <div className='flex justify-center items-center ' style={{ width: '80%', margin: '0 auto', }} >
+       <div className='flex justify-center items-center ' style={{ width: '80%', margin: '0 auto' }} >
         <Grid container spacing={4} >
           {artisans.map((artisan, index) => (
             <Grid item xs={12} sm={6} md={4} key={index} className="artisan-profile">
@@ -151,10 +159,10 @@ const Homepage = () => {
                   alt={artisan.name}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h5" component="div" style={{fontFamily: "Xanh Mono monospace"}} className='primary-color' >
                     {artisan.name}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" style={{fontFamily: "Xanh Mono monospace"}} className='primary-color' >
                     {artisan.description}
                   </Typography>
                 </CardContent>
