@@ -63,7 +63,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', color: 'black' }}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', color: '#134929' }}>
         <Toolbar variant="dense">
           <IconButton
             edge="start"
@@ -74,8 +74,7 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          
-          <Typography variant="h6" color="inherit" component="div">
+          <Typography variant="h6" color="#134929" component="div">
             TOHN
           </Typography>
         </Toolbar>
