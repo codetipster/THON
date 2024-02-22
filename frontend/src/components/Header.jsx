@@ -12,10 +12,14 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { useState, useEffect } from 'react';
+import logo from '../assets/images/logo.jpg'; 
+
 
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
   const toggleDrawer = (open) => (event) => {
@@ -35,11 +39,19 @@ export default function Header() {
     if (text == 'Artisans') {
       navigate('/Artisans')
     }
-    // Correctly call toggleDrawer to close the drawer without passing an event
+   
     setIsDrawerOpen(false);
   };
   
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setIsScrolled(offset > 100); 
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const list = (
     <Box
@@ -52,7 +64,12 @@ export default function Header() {
         {['Home', 'Atelier', 'Artisans', 'About us', 'Contact'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => handleListItemClick(text)}>
-              <ListItemText primary={text} />
+              <ListItemText primary={text}
+              sx={{
+                color: '#134929', 
+                fontFamily: "Xanh Mono monospace"
+              }}
+               />
             </ListItemButton>
           </ListItem>
         ))}
@@ -63,22 +80,42 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', color: '#134929' }}>
-        <Toolbar variant="dense">
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="#134929" component="div">
-            TOHN
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppBar
+  position="fixed"
+  sx={{
+    backgroundColor: isScrolled ? '#fff' : '#fff',
+    boxShadow: isScrolled ? 'none' : 'none',
+    color: isScrolled ? '#134929' : '#134929', 
+    fontFamily: "Xanh Mono monospace",
+    transition: 'all 0.2s ease-in-out', 
+    '&:hover': {
+      backgroundColor: '#fff', 
+      color: '#134929'
+    },
+  }}
+>
+  <Toolbar variant="dense">
+    <IconButton
+      edge="start"
+      color="inherit"
+      aria-label="menu"
+      sx={{ mr: 2 }}
+      onClick={toggleDrawer(true)}
+    >
+      <MenuIcon />
+    </IconButton>
+    
+    <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left', fontFamily: "Xanh Mono monospace"}}>
+      TOHN
+    </Typography>
+    <img 
+      src={logo} 
+      alt="Logo" 
+      style={{ height: '30px', marginRight:'1250px', marginTop:'0px' }} 
+    />
+  </Toolbar>
+</AppBar>
+
       <Drawer
         anchor="left"
         open={isDrawerOpen}
