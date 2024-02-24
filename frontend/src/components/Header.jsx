@@ -105,8 +105,20 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-
-      <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', color: '#134929' }}>
+      <AppBar
+          position="fixed"
+          sx={{
+            backgroundColor: isScrolled ? '#fff' : '#fff',
+            boxShadow: isScrolled ? 'none' : 'none',
+            color: isScrolled ? '#134929' : '#134929', 
+            fontFamily: "Xanh Mono monospace",
+            transition: 'all 0.2s ease-in-out', 
+            '&:hover': {
+              backgroundColor: '#fff', 
+              color: '#134929'
+            },
+          }}
+        >
         <Toolbar variant="dense">
           <IconButton
             edge="start"
@@ -117,51 +129,20 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="#134929" component="div">
+          
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left', fontFamily: "Xanh Mono monospace"}}>
             TOHN
           </Typography>
-
+          <img 
+            src={logo} 
+            alt="Logo" 
+            style={{ height: '30px', marginRight:'1250px', marginTop:'0px' }} 
+          />
           <IconButton color="inherit" onClick={toggleCartDrawer(true)}>
             <ShoppingCartIcon />
           </IconButton>
-
         </Toolbar>
-      </AppBar>
-      <AppBar
-  position="fixed"
-  sx={{
-    backgroundColor: isScrolled ? '#fff' : '#fff',
-    boxShadow: isScrolled ? 'none' : 'none',
-    color: isScrolled ? '#134929' : '#134929', 
-    fontFamily: "Xanh Mono monospace",
-    transition: 'all 0.2s ease-in-out', 
-    '&:hover': {
-      backgroundColor: '#fff', 
-      color: '#134929'
-    },
-  }}
->
-  <Toolbar variant="dense">
-    <IconButton
-      edge="start"
-      color="inherit"
-      aria-label="menu"
-      sx={{ mr: 2 }}
-      onClick={toggleDrawer(true)}
-    >
-      <MenuIcon />
-    </IconButton>
-    
-    <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left', fontFamily: "Xanh Mono monospace"}}>
-      TOHN
-    </Typography>
-    <img 
-      src={logo} 
-      alt="Logo" 
-      style={{ height: '30px', marginRight:'1250px', marginTop:'0px' }} 
-    />
-  </Toolbar>
-</AppBar>
+    </AppBar>
 
       <Drawer
         anchor="left"
