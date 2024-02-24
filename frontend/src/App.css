@@ -1,5 +1,6 @@
 :root {
   --primary-color: #134929;
+  --primary-font: "Xanh Mono monospace"
 }
 
 .primary-color {
@@ -77,4 +78,12 @@ body {
   text-decoration: underline;
   transform: scale(1.25);
 }
+.shop-now {
+  transition: transform 0.3s ease, text-decoration 0.3s ease;
+  cursor: pointer;
+}
 
+
+.shop-now.loading {
+  cursor: default;
+}

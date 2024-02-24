@@ -10,6 +10,7 @@ import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import ScrollReveal from 'scrollreveal';
 import { backInOut, motion } from 'framer-motion';
 import artisanBImage from "../assets/images/recropped.jpg";
+import logo from '../assets/images/logo.jpg'; 
 
 
 const Homepage = () => {
@@ -36,17 +37,17 @@ const Homepage = () => {
     {
       name: "Artisan A",
       description: "Expert in traditional pottery.",
-      image: artisanBImage, // A sample image of pottery
+      image: artisanBImage,
     },
     {
       name: "Artisan B",
       description: "Renowned for intricate textile designs.",
-      image: artisanBImage, // A sample image of textiles
+      image: artisanBImage, 
     },
     {
       name: "Artisan B",
       description: "Renowned for intricate textile designs.",
-      image: artisanBImage, // Placeholder, replace with actual image paths
+      image: artisanBImage, 
     },
     
   ];
@@ -79,11 +80,10 @@ const Homepage = () => {
           <div className='w-full md:w-1/2 flex flex-col justify-center items-center md:h-[90vh]'>
           <div className='mt-20 sm:mt-0'>
             <motion.div
-              initial={{ opacity: 0, x: -30, y: 0 }} // Start slightly left
+              initial={{ opacity: 0, x: -30, y: 0 }} 
               animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ delay: 0.2, duration: 1.9 }} // Increased duration for slower animation
-              //style={{ fontFamily: "Xanh Mono monospace", fontSize: '50px', marginBottom: '20px' }}
-              className="text-4xl md:text-5xl lg:text-6xl font-Xanh mb-5"
+              transition={{ delay: 0.9, duration: 1.9 }}
+              className="text-4xl md:text-5xl lg:text-6xl primary-font mb-5"
             >
               <div className='gradient-text'>
                 Own a piece of art...
@@ -91,10 +91,10 @@ const Homepage = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: -60, y: 20 }} // Move further left and slightly down
+              initial={{ opacity: 0, x: -60, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ delay: 0.7, duration: 1.9 }} // Increased duration for slower animation
-              className="text-4xl md:text-5xl lg:text-6xl font-Xanh mb-5"
+              transition={{ delay: 2, duration: 1.9 }}
+              className="text-4xl md:text-5xl lg:text-6xl primary-font mb-5"
             >
               <div className='gradient-text'>
                 Empower a woman...
@@ -102,10 +102,10 @@ const Homepage = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: -90, y: 40 }} // Even further left and more down
+              initial={{ opacity: 0, x: -90, y: 40 }} 
               animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ delay: 1.2, duration: 1.9 }} // Increased duration for slower animation
-              className="text-4xl md:text-5xl lg:text-6xl font-Xanh mb-5"
+              transition={{ delay: 3.3, duration: 1.9 }}
+              className="text-4xl md:text-5xl lg:text-6xl primary-font mb-5"
             >
               <div className='gradient-text'>
                 Plant a tree
@@ -113,31 +113,34 @@ const Homepage = () => {
             </motion.div>
           </div>
           
-          <Button
-          variant="outlined"
-          sx={{
-            minWidth: { xs: '100%', sm: '150px' }, // Responsive width: full width on xs screens, 150px on sm screens and above
-            height: '48px', // Increased height for better touchability
-            fontSize: { xs: '0.875rem', sm: '1rem' }, // Responsive font size
-            color: '#D7193E',
-            borderColor: '#CE2344',
-            ':hover': {
-              backgroundColor: '#ffff',
-              borderColor: '#CE2344',
-            },
-            // Add padding for larger touchable area and visual size
-            padding: { xs: '10px 20px', sm: '12px 24px' },
-          }}
-          endIcon={<ShoppingBasketIcon />}
-          onClick={handleClick}
-          disabled={loading} // Disable button when loading
-        >
-          Shop Now
-         </Button>
+          <a
+    href="#"
+    onClick={handleClick}
+    className={`shop-now ${loading ? 'loading' : ''}`}
+    style={{
+      textDecoration: 'none',
+      display: 'flex', 
+      alignItems: 'center',
+      fontWeight: 'bold',
+      fontSize: "20px",
+      color: '#134929',
+      fontFamily: "Xanh Mono monospace",
+      marginTop: '20px',
+    }}
+  >
+    Shop Now
+    <img 
+      src={logo} 
+      alt="Logo" 
+      style={{ height: '30px', marginLeft: '10px' }} 
+    />
+</a>
+            
+
           </div>
           <div className='w-full md:w-1/2 h-screen'>
             <div className='w-full h-full '>
-              <img src={lastSuja} alt="A of Suja" className='h-full w-full object-cover' />
+              <img src={lastSuja} alt="A picture of Suja" className='h-full w-full object-cover' />
             </div>
           </div>
         </div>
@@ -147,9 +150,11 @@ const Homepage = () => {
         <Typography variant="h4" gutterBottom style={{fontFamily: "Xanh Mono monospace"}} className='p-5 primary-color'>
         Our Artisans
         </Typography>
-        <Typography variant="h5" gutterBottom style={{fontFamily: "Xanh Mono monospace"}} className='p-5 primary-color'> 
+       
+          <Typography variant="h5" gutterBottom style={{fontFamily: "Xanh Mono monospace"}} className='p-5 primary-color'> 
            For her, For the Earth.
-        </Typography>
+        </Typography> 
+       
        <div className='flex justify-center items-center ' style={{ width: '80%', margin: '0 auto' }} >
         <Grid container spacing={4} >
           {artisans.map((artisan, index) => (
