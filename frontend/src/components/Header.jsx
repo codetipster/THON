@@ -12,13 +12,14 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useState, useEffect } from 'react';
 import logo from '../assets/images/logo.jpg'; 
 
 
-
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [isCartOpen, setIsCartOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
@@ -29,6 +30,12 @@ export default function Header() {
 
     setIsDrawerOpen(open);
   };
+
+  const toggleCartDrawer = (open) => () => {
+    setIsCartOpen(open);
+  };
+
+
   const handleListItemClick = (text) => {
     if (text === 'Home') {
       navigate('/');
@@ -61,7 +68,7 @@ export default function Header() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Home', 'Atelier', 'Artisans', 'About us', 'Contact'].map((text, index) => (
+        {['Home', 'Atelier', 'Artisans', 'About us', 'Contact', 'Cart'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => handleListItemClick(text)}>
               <ListItemText primary={text}
@@ -78,8 +85,48 @@ export default function Header() {
     </Box>
   );
 
+  const cartList = (
+    <Box
+      sx={{ width: '50vw' }} // Adjust the width as needed
+      role="presentation"
+      onClick={toggleCartDrawer(false)}
+      onKeyDown={toggleCartDrawer(false)}
+    >
+      <List>
+        {/* Map through your cart items here */}
+        <ListItem>
+          <ListItemText primary="Cart Item Name" secondary="Quantity: 1" />
+          {/* Add more details like price, remove button, etc. */}
+        </ListItem>
+        {/* Repeat for other items */}
+      </List>
+    </Box>
+  );
+
   return (
     <Box sx={{ flexGrow: 1 }}>
+
+      <AppBar position="fixed" sx={{ backgroundColor: 'transparent', boxShadow: 'none', color: '#134929' }}>
+        <Toolbar variant="dense">
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+            onClick={toggleDrawer(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="#134929" component="div">
+            TOHN
+          </Typography>
+
+          <IconButton color="inherit" onClick={toggleCartDrawer(true)}>
+            <ShoppingCartIcon />
+          </IconButton>
+
+        </Toolbar>
+      </AppBar>
       <AppBar
   position="fixed"
   sx={{
@@ -122,6 +169,9 @@ export default function Header() {
         onClose={toggleDrawer(false)}
       >
         {list}
+      </Drawer>
+      <Drawer anchor="right" open={isCartOpen} onClose={toggleCartDrawer(false)}>
+        {cartList}
       </Drawer>
     </Box>
   );
